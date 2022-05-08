@@ -1,9 +1,9 @@
 <template>
     <v-hover v-slot="{ hover }" open-delay="200">
         <v-card :elevation="hover ? 16 : 2" :class="{ 'on-hover': hover }" class="card">
-            <v-img :src="posterPath" alt="" class="btn img">
-                <v-btn icon class="background: blue ">
-                    <v-icon color="red">mdi-heart</v-icon>
+            <v-img :src="posterPath" alt="">
+                <v-btn icon>
+                    <v-icon color="white">mdi-heart</v-icon>
                 </v-btn>
             </v-img>
             <v-card-title class="subtitle-2 title">{{ movie.title }}</v-card-title>
@@ -20,8 +20,8 @@
                         {{ genreTypeName(genre, index) }}
                     </span>
                 </div>
-                <v-btn class="btn_adicionar">Adicionar</v-btn>
             </v-card-text>
+            <v-btn text class="btn_adicionar">Adicionar</v-btn>
         </v-card>
     </v-hover>
 </template>
@@ -35,7 +35,7 @@ export default {
         movie: {
             required: true,
         },
-        genres: {
+        gender: {
             required: true,
         }
     },
@@ -46,19 +46,20 @@ export default {
     },
     methods: {
         genreTypeName(genraId, index) {
-            for (const item of this.genres) {
+            for (const item of this.gender) {
                 if (item.id == genraId) {
                     if (this.movie.genre_ids.length - 1 == index) {
                         return item.name;
                     } else {
-                        return item.name + ', ';
+                        return item.name + ','
                     }
 
                 }
             }
         }
 
-    }
+
+    },
 
 }
 </script>
@@ -66,6 +67,10 @@ export default {
 <style scoped>
 .card {
     margin-top: 40px !important;
+}
+
+.heart {
+    background: rgb(64, 73, 73);
 }
 
 .title {
@@ -89,6 +94,8 @@ export default {
 
 .btn_adicionar {
     width: 100%;
+    background: #2c70ff;
+    color: white;
 
 }
 </style>
