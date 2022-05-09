@@ -67,6 +67,7 @@ export default {
 <style scoped>
 .card {
     margin-top: 40px !important;
+   
 }
 
 .heart {
